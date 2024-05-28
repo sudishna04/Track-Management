@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .filters {
+            margin-bottom: 20px;
+        }
+        .filters input {
+            margin-right: 10px;
+            padding: 5px;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+        .action {
+            color: #4CAF50;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Track Management</div>
+        <div class="filters">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate">
+            <button onclick="filterResults()">Search</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Moving</th>
+                        <th>Timestamp</th>
+                        <th>Sighting Time</th>
+                        <th>Herd Size</th>
+                        <th>Male</th>
+                        <th>Female</th>
+                        <th>Calf</th>
+                        <th>Location</th>
+                        <th>User</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data Rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const data = [
+            {
+                slNo: 719,
+                moving: "No",
+                timestamp: "2024-05-25 09:12:38",
+                sightingTime: "2024-05-25 09:12:02",
+                herdSize: 3,
+                male: 2,
+                female: 1,
+                calf: 0,
+                location: "ಬಾಚಿಹಳ್ಳಿ ಬೇಲಗೊಂದ ಬೆಟ್ಟ 12.769786 75.761289",
+                user: "95242e3d-2b16-48fe-b04c-17d4ed6c9602",
+                status: "Approved",
+                action: "No Media Found"
+            },
+            {
+                slNo: 718,
+                moving: "No",
+                timestamp: "2024-05-25 09:02:17",
+                sightingTime: "2024-05-25 09:01:24",
+                herdSize: 1,
+                male: 1,
+                female: 0,
+                calf: 0,
+                location: "ಜೆಡಗೇ ಅವರೆ ಹೊಳೆ ಡೋಡಹುಡೇ",
+                user: "95242e3d-2b16-48fe-b04c-17d4ed6c9602",
+                status: "Approved",
+                action: "No Media Found"
+            }
+        ];
+
+        function loadTableData(items) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+
+            items.forEach(item => {
+                let row = tableBody.insertRow();
+                Object.values(item).forEach(text => {
+                    let cell = row.insertCell();
+                    cell.textContent = text;
+                });
+            });
+        }
+
+        function filterResults() {
+            // Implement your filter logic here based on startDate and endDate inputs
+        }
+
+        window.onload = () => {
+            loadTableData(data);
+        }
+    </script>
+</body>
+</html>
